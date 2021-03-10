@@ -7,7 +7,7 @@ public class Student{
     private String lastName;
     private int semester;
     private String studentID;
-    private String courses = null;
+    private String courses = "";
     private int tuitionBalance = 0;
     private static int costPerCourse = 600;
     private static int id = 1000;
@@ -28,7 +28,7 @@ public class Student{
 
         setID();
 
-        System.out.print(firstName + " " + lastName + " " + semester + " " + studentID);
+//        System.out.print(firstName + " " + lastName + " " + semester + " " + studentID);
     }
 //    Generate student's ID
     private void setID(){
@@ -48,10 +48,25 @@ public class Student{
             }else { break; }
         }while( 1 != 0); //infinite
         System.out.println("Enrolled in: " + courses);
-        System.out.println("Tuition Balance: " + tuitionBalance);
     }
 
-//    View Balance and pay tuition
+//  Pay tuition
+    public void payTuition() {
+        System.out.println("Tuition Balance: $" + tuitionBalance);
+        System.out.print("Enter your payment: $");
+        Scanner in = new Scanner(System.in);
+        int payment = in.nextInt();
+        tuitionBalance = tuitionBalance - payment;
+        System.out.println("Thank you for your payment of: $" + payment);
+//        System.out.println("Your current balance is: $" + tuitionBalance);
+    }
 
-//    Show status
+//            Show status
+        public String toString(){
+            return "Student: " + firstName + " " + lastName +
+                    "\nSemester: " + semester +
+                    "\nStudent ID: " + studentID +
+                    "\nCourses: " + courses +
+                    "\nBalance: $" + tuitionBalance;
+        }
 }
